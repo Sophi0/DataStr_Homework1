@@ -61,6 +61,18 @@ public class MyStack {
 			elements[elementCounter] = item;
 		}
 	}
+
+	public void push(char item, int x) throws Exception {
+	//1.check if the index is equal with element
+		if(elementCounter == x) {
+	//2.if yes, throw exception		
+			throw (new Exception("Stack if full"));
+		}
+	//3.if not, function adds the new element 'x' to the top of the stack
+		elements[elementCounter] = item;
+	//4.increase element
+		elementCounter++;
+	}
 	
 	//varbūt padomāt kā citādāk izvadīt push() funkciju
 	/*
@@ -111,5 +123,31 @@ public class MyStack {
 		}
 	//3.if not empty, the function returns the top element of the stack
 		return elements[elementCounter - 1];	//pa kreisi
+	}
+	
+	/*
+	 * print() function
+	 */
+	
+	public void print() throws Exception{
+		if(isEmpty()) {
+			throw (new Exception("Array is empty ad it is not possible to print elements"));
+		}
+		else {
+			for(int i = 0; i < elementCounter; i++) {
+			System.out.print(elements[i] + " ");
+	}
+			System.out.println();
+		}
+	}
+	
+	/*
+	 * makeEmpty() function
+	 */
+	public void makeEmpty() {
+		stackSize = DEFAULT_STACK_SIZE;
+		elementCounter = 0;
+		elements = new char[stackSize];
+		System.gc();	//garbage collector
 	}
 }
