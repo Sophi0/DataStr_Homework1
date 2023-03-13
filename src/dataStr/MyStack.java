@@ -49,7 +49,7 @@ public class MyStack {
 	}
 	
 	/*
-	 * push() funkcija
+	 * push() funkcija adds element x to the stack
 	 */
 	
 	public void push(char item) {					//funkcija ņem char item kā parametru,
@@ -72,35 +72,9 @@ public class MyStack {
 	*/
 	
 	/*
-	 * pop() funkcija
+	 * pop() funkcija removes the last element of the stack.
 	 */
-	/*
-	 * //1.create a definition of function remove
-		public void remove(int index) throws Exception{
-	//2.verify isEmpty
-			if(isEmpty()) {
-				throw (new Exception("Array is empty ad it is not possible to remove elements"));
-				}
-			else {
-	//3.verify the index - is it appropriate
-			if(index < 0 || index >= elementCounter) {
-				throw (new Exception("Wrong index"));
-			}
-			else {
-	//4.copy elements from index to end
-				for(int i = index; i < elementCounter - 1; i++) {
-					elements[i] = elements[i + 1];	//pa labi
-				}
-	//5.initialize the last element with NULL symbol (int value is 0)			
-				elements[elementCounter - 1] = 0; //NUL symbol
-	//6.decrease element
-				elementCounter--;
-	//for optimization
-	//elements[--elementCounter] = 0;			
-			}
-		}
-	}
-	 */
+	
 	//1.create a definition of function pop()
 	public void pop(int item) throws Exception {
 	//2.verify isEmpty
@@ -123,5 +97,19 @@ public class MyStack {
 				elementCounter--;
 			}
 		}
+	}
+	
+	/*
+	 * top() function returns the last element of the stack
+	 */
+	
+	//1.create a definition of function top()
+	public char top() throws Exception {
+	//2.make a check if the stack is empty, if yes, throws exception
+		if(elementCounter == 0) {
+			throw (new Exception("Stack is empty")); 
+		}
+	//3.if not empty, the function returns the top element of the stack
+		return elements[elementCounter - 1];	//pa kreisi
 	}
 }
