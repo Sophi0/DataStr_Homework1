@@ -8,27 +8,27 @@ public class MainService {
 		MyStack charStack = new MyStack();
 		try {
 			System.out.println("-----PUSH-----");
-			charStack.push('a');	//a
-			charStack.push('b');	//a, b
-			charStack.push('d');	//a, b, d
-			charStack.push('n', 0); //n, a, b, d
+			charStack.push(1);	//1
+			charStack.push(2);	//1, 2
+			charStack.push(5);	//1, 2, 5
+			charStack.push(3, 0); //3, 1, 2, 5
 			charStack.print();
 			
 			System.out.println("-----POP----");
 			
-			charStack.pop(3);	//n, a, d
+			charStack.pop(3);	//3, 1, 2
 			charStack.print();
 			
 			System.out.println("-----TOP----");
-			charStack.push('z');
-			charStack.top();	//n, a, b, d
+			charStack.push(8);
+			charStack.top();	//3, 1, 2, 8
 			charStack.print();
 			
 			System.out.println("-----MAKE-EMPTY----");
 			
 			charStack.makeEmpty();	//empty stack
 			//charStack.print();
-			charStack.push('a');	//a
+			charStack.push(7);	//7
 			charStack.print();
 		}
 		catch(Exception e) {

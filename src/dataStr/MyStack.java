@@ -2,7 +2,7 @@ package dataStr;
 
 public class MyStack {
 	//1.variables
-	private char[] elements;
+	private int[] elements;
 	private final int DEFAULT_STACK_SIZE = 10;
 	private int stackSize = DEFAULT_STACK_SIZE;
 	private int elementCounter = 0;
@@ -11,7 +11,7 @@ public class MyStack {
 	
 	//no-args
 	public MyStack() {
-		elements = new char[stackSize];	//izveidosim masivu ar 6 šūnam(DEFAULT_STACK_SIZE) 
+		elements = new int[stackSize];	//izveidosim masivu ar 6 šūnam(DEFAULT_STACK_SIZE) 
 	}
 	
 	//args
@@ -19,7 +19,7 @@ public class MyStack {
 		if(inputStackSize > 0) {
 			stackSize = inputStackSize;
 		}
-		elements = new char[stackSize];
+		elements = new int[stackSize];
 	}
 	
 	//functions
@@ -53,7 +53,7 @@ public class MyStack {
 	 * push() funkcija adds element x to the stack
 	 */
 	
-	public void push(char item) throws Exception {
+	public void push(int item) throws Exception {
 		//1.chec with exception if elementCounter compared with stackSize
 		if(elementCounter == stackSize) {		 
 			throw(new Exception("Stack is full"));	
@@ -64,7 +64,7 @@ public class MyStack {
 		}
 	}
 
-	public void push(char item, int x) throws Exception {
+	public void push(int item, int x) throws Exception {
 		//1.check if elementCounter equal with stackSize, otherwise throw an exception
 		if(elementCounter == stackSize) {
 			throw(new Exception("Stack is full"));
@@ -117,7 +117,7 @@ public class MyStack {
 	 */
 	
 	//1.create a definition of function top()
-	public char top() throws Exception {
+	public int top() throws Exception {
 	//2.make a check if the stack is empty, if yes, throws exception
 		if(elementCounter == 0) {
 			throw (new Exception("Stack is empty")); 
@@ -148,7 +148,7 @@ public class MyStack {
 	public void makeEmpty() {
 		stackSize = DEFAULT_STACK_SIZE;
 		elementCounter = 0;
-		elements = new char[stackSize];
+		elements = new int[stackSize];
 		System.gc();	//garbage collector
 	}
 }
