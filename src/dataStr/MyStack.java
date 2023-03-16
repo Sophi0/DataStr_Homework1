@@ -3,7 +3,7 @@ package dataStr;
 public class MyStack {
 	//1.variables
 	private char[] elements;
-	private final int DEFAULT_STACK_SIZE = 6;
+	private final int DEFAULT_STACK_SIZE = 10;
 	private int stackSize = DEFAULT_STACK_SIZE;
 	private int elementCounter = 0;
 	
@@ -22,7 +22,7 @@ public class MyStack {
 		elements = new char[stackSize];
 	}
 	
-	//TODO functions
+	//functions
 	
 	/*
 	 * Izveidot funkciju, kas pārbauda, vai steks ir pilns;
@@ -48,40 +48,41 @@ public class MyStack {
 		return elementCounter;
 	}
 	
+	
 	/*
 	 * push() funkcija adds element x to the stack
 	 */
 	
-	public void push(char item) {					//funkcija ņem char item kā parametru,
-		if(elementCounter == stackSize - 1) {		//ja steka augšdaļā ir max izmēra, tad funkcija izmest paziņojumu, 
-			System.out.println("Stack Overflow");	//kas norāda, ka steks ir pilns
+	public void push(char item) throws Exception {
+		//1.chec with exception if elementCounter compared with stackSize
+		if(elementCounter == stackSize) {		 
+			throw(new Exception("Stack is full"));	
 		}
+		//2.if not equal, it adds the new element at the top of the stack
 		else {
-			elementCounter++;
-			elements[elementCounter] = item;
+			elements[elementCounter++] = item;
 		}
 	}
 
 	public void push(char item, int x) throws Exception {
-	//1.check if the index is equal with element
-		if(elementCounter == x) {
-	//2.if yes, throw exception		
-			throw (new Exception("Stack if full"));
+		//1.check if elementCounter equal with stackSize, otherwise throw an exception
+		if(elementCounter == stackSize) {
+			throw(new Exception("Stack is full"));
 		}
-	//3.if not, function adds the new element 'x' to the top of the stack
-		elements[elementCounter] = item;
-	//4.increase element
+		//2.check if 'x' is greater than 0 and smaller or equal than elementCounter, otherwise throw an exception
+		if(x < 0 || x >= elementCounter) {
+			throw (new Exception("Wrong index"));
+		}
+		//3.with 'for' loop element will move after 'x' to make space for the new element. Function started from the last element and goes up to 'x'
+		for(int i = elementCounter - 1; i >= x; i--) {	//move elements to make
+			elements[i + 1] = elements[i];				//space for the new element
+		}
+		//4.next up is to add a new element
+		elements[x] = item;
+		//5.increase elementCounter
 		elementCounter++;
-	}
-	
-	//varbūt padomāt kā citādāk izvadīt push() funkciju
-	/*
-	public void push(char item) {
-		if(isFull()) {
 			
 		}
-	}
-	*/
 	
 	/*
 	 * pop() funkcija removes the last element of the stack.
@@ -131,7 +132,7 @@ public class MyStack {
 	
 	public void print() throws Exception{
 		if(isEmpty()) {
-			throw (new Exception("Array is empty ad it is not possible to print elements"));
+			throw (new Exception("Array is empty and it is not possible to print elements"));
 		}
 		else {
 			for(int i = 0; i < elementCounter; i++) {
