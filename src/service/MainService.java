@@ -1,6 +1,7 @@
 package service;
 
 import dataStr.MyStack;
+import dataStr.Student;
 
 public class MainService {
 
@@ -11,7 +12,7 @@ public class MainService {
 			charStack.push(1);	//1
 			charStack.push(2);	//1, 2
 			charStack.push(5);	//1, 2, 5
-			charStack.push(3, 0); //3, 1, 2, 5
+			charStack.push(3); //3, 1, 2, 5
 			charStack.print();
 			
 			System.out.println("-----POP----");
@@ -30,6 +31,8 @@ public class MainService {
 			//charStack.print();
 			charStack.push(7);	//7
 			charStack.print();
+			
+		
 		}
 		catch(Exception e) {
 			e.printStackTrace();

@@ -1,8 +1,8 @@
 package dataStr;
 
-public class MyStack {
+public class MyStack <T>{
 	//1.variables
-	private int[] elements;
+	private T[] elements;
 	private final int DEFAULT_STACK_SIZE = 10;
 	private int stackSize = DEFAULT_STACK_SIZE;
 	private int elementCounter = 0;
@@ -11,7 +11,7 @@ public class MyStack {
 	
 	//no-args
 	public MyStack() {
-		elements = new int[stackSize];	//izveidosim masivu ar 6 šūnam(DEFAULT_STACK_SIZE) 
+		elements = (T[])new Object[stackSize];	//izveidosim masivu ar 6 šūnam(DEFAULT_STACK_SIZE) 
 	}
 	
 	//args
@@ -19,7 +19,7 @@ public class MyStack {
 		if(inputStackSize > 0) {
 			stackSize = inputStackSize;
 		}
-		elements = new int[stackSize];
+		elements = (T[])new Object[stackSize];
 	}
 	
 	//functions
@@ -53,8 +53,8 @@ public class MyStack {
 	 * push() funkcija adds element x to the stack
 	 */
 	
-	public void push(int item) throws Exception {
-		//1.chec with exception if elementCounter compared with stackSize
+	public void push(T item) throws Exception {
+		//1.check with exception if elementCounter compared with stackSize
 		if(elementCounter == stackSize) {		 
 			throw(new Exception("Stack is full"));	
 		}
@@ -63,7 +63,7 @@ public class MyStack {
 			elements[elementCounter++] = item;
 		}
 	}
-
+/*
 	public void push(int item, int x) throws Exception {
 		//1.check if elementCounter equal with stackSize, otherwise throw an exception
 		if(elementCounter == stackSize) {
@@ -83,7 +83,7 @@ public class MyStack {
 		elementCounter++;
 			
 		}
-	
+*/	
 	/*
 	 * pop() funkcija removes the last element of the stack.
 	 */
@@ -105,7 +105,7 @@ public class MyStack {
 					elements[i] = elements[i + 1]; 	//iet pa labi
 				}
 	//5.initialize the last element with NULL symbol (int value is 0)
-				elements[elementCounter - 1] = 0;
+				elements[elementCounter - 1] = null;
 	//6.decrease element
 				elementCounter--;
 			}
@@ -117,7 +117,7 @@ public class MyStack {
 	 */
 	
 	//1.create a definition of function top()
-	public int top() throws Exception {
+	public T top() throws Exception {
 	//2.make a check if the stack is empty, if yes, throws exception
 		if(elementCounter == 0) {
 			throw (new Exception("Stack is empty")); 
@@ -148,7 +148,7 @@ public class MyStack {
 	public void makeEmpty() {
 		stackSize = DEFAULT_STACK_SIZE;
 		elementCounter = 0;
-		elements = new int[stackSize];
+		elements = (T[])new Object[stackSize];
 		System.gc();	//garbage collector
 	}
 }
