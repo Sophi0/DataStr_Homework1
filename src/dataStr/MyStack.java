@@ -11,7 +11,7 @@ public class MyStack <T>{
 	
 	//no-args
 	public MyStack() {
-		elements = (T[])new Object[stackSize];	//izveidosim masivu ar 6 šūnam(DEFAULT_STACK_SIZE) 
+		elements = (T[])new Object[stackSize];	//izveidosim masivu ar 10 šūnam(DEFAULT_STACK_SIZE) 
 	}
 	
 	//args
