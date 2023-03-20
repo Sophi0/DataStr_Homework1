@@ -70,25 +70,77 @@ public class MyQueue <T>{
 	/*
 	 * dequeue() funkcija - iznem pirmo elementu no rindas
 	 */
+	/*
+	public T dequeue() throws Exception {
+		//1.check if the queue is empty
+		 if (isEmpty()) {
+		        throw (new Exception("Queue is empty"));
+		    }
+		 //2.get the front element and increase it
+		    T frontElement = elements[front];
+		    front++;
+		 //3.decrease elementCounter
+		    elementCounter--;
+		 //4.check if the queue is empty now, set -1 to front and rear
+		    if (elementCounter == 0) {
+		        front = -1;
+		        rear = -1;
+		    }
+	  
+		    return frontElement;
+		}
+	*/
+	/*
+	 * dequeue() other method
+	 */
 	public T dequeue() throws Exception{
-		//1.check if queue is empty
+		//1.check if the queue is empty
 		if(isEmpty()) {
 			throw (new Exception("Queue is empty"));
-		}
-		//2.increment front index and get first element
+	    }
+		//2.get the front element
 		T frontElement = elements[front];
-		front++;
-		//3.decrease elementCounter
-		elementCounter--;
-		//4.check if the queue now is empty, make front and rear to -1
-		if(isEmpty()) {
-			front = -1;
-			rear = -1;
+		//3.move all the elements to the left
+		for(int i = 0; i < rear; i++) {
+			elements[i] = elements[i + 1];
 		}
-		return frontElement;
-			
+		//4.decrease elementCounter and rear
+		rear--;
+		elementCounter--;
+		//5.check if the queue is now empty, set -1 to front and rear
+		if (elementCounter == 0) {
+	        front = -1;
+	        rear = -1;
+	    }
+  
+	    return frontElement;
 	}
 	
+	/*
+	 * print() function
+	 */
+	public void print() throws Exception{
+		if(isEmpty()) {
+			throw (new Exception("Queue is empty and it is not possible to print elements"));
+		}
+		else {
+			for(int i = 0; i < elementCounter; i++) {
+			System.out.print(elements[i] + " ");
+	}
+			System.out.println();
+		}
+	}
+	
+	/*
+	 * makeEmpty() function
+	 */
+	public void makeEmpty() {
+		front = -1;
+		rear = -1;
+		elementCounter = 0;
+		elements = (T[])new Object[DEFAULT_STACK_SIZE];
+		System.gc();	
+	}
 	
 	
 }

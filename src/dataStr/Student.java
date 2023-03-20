@@ -68,12 +68,11 @@ public class Student implements Comparable<Student>{
 
     @Override
     public String toString() {
-        return "Student={" +
-                "ID=" + ID +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", grades=" + Arrays.toString(grades) + ", average grade=" + calculateAVGgrade() +
-                '}';
+        return "\nStudent: " +
+                "ID = " + ID +
+                ", name = '" + name + '\'' +
+                ", surname = '" + surname + '\'' +
+                ", grades = " + Arrays.toString(grades) + ", average grade = " + calculateAVGgrade() + "\n";
     }
 
 	@Override

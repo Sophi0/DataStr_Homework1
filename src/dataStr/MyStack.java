@@ -132,7 +132,7 @@ public class MyStack <T>{
 	
 	public void print() throws Exception{
 		if(isEmpty()) {
-			throw (new Exception("Array is empty and it is not possible to print elements"));
+			throw (new Exception("Stack is empty and it is not possible to print elements"));
 		}
 		else {
 			for(int i = 0; i < elementCounter; i++) {
