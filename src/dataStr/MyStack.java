@@ -36,7 +36,7 @@ public class MyStack <T>{
 	 * Izveidot funkciju, kas pārbauda, vai steks ir tukšs;
 	 */
 	
-	private boolean isEmpty() {
+	public boolean isEmpty() {
 		return (elementCounter == 0);
 	}
 	
@@ -50,7 +50,7 @@ public class MyStack <T>{
 	
 	
 	/*
-	 * push() funkcija adds element x to the stack
+	 * push() funkcija adds element to the end of the stack
 	 */
 	
 	public void push(T item) throws Exception {
@@ -63,54 +63,27 @@ public class MyStack <T>{
 			elements[elementCounter++] = item;
 		}
 	}
-/*
-	public void push(int item, int x) throws Exception {
-		//1.check if elementCounter equal with stackSize, otherwise throw an exception
-		if(elementCounter == stackSize) {
-			throw(new Exception("Stack is full"));
-		}
-		//2.check if 'x' is greater than 0 and smaller or equal than elementCounter, otherwise throw an exception
-		if(x < 0 || x >= elementCounter) {
-			throw (new Exception("Wrong index"));
-		}
-		//3.with 'for' loop element will move after 'x' to make space for the new element. Function started from the last element and goes up to 'x'
-		for(int i = elementCounter - 1; i >= x; i--) {	//move elements to make
-			elements[i + 1] = elements[i];				//space for the new element
-		}
-		//4.next up is to add a new element
-		elements[x] = item;
-		//5.increase elementCounter
-		elementCounter++;
-			
-		}
-*/	
+
 	/*
 	 * pop() funkcija removes the last element of the stack.
 	 */
-	
-	//1.create a definition of function pop()
-	public void pop(int item) throws Exception {
-	//2.verify isEmpty
-		if(isEmpty()) {
-			throw(new Exception("Stack is empty and it is not possible to remove elements"));	
-		}
-		else {
-	//3.verify the index - is it appropriate
-			if(item < 0 || item >= elementCounter) {
-				throw(new Exception("Wrong index"));
+	public void pop() throws Exception {
+		//1.verify isEmpty
+			if(isEmpty()) {
+				throw(new Exception("Stack is empty and it is not possible to remove elements"));	
 			}
-			else {
-	//4.copy elements from index to end
-				for(int i = item; i < elementCounter - 1; i++) {
-					elements[i] = elements[i + 1]; 	//iet pa labi
+				else {
+		//2.copy elements from index to end
+					for(int i = stackSize; i < elementCounter - 1; i++) {
+						elements[i] = elements[i + 1]; 	//iet pa labi
+					}
+		//3.initialize the last element with NULL symbol (int value is 0)
+					elements[elementCounter - 1] = null;
+		//4.decrease element
+					elementCounter--;
 				}
-	//5.initialize the last element with NULL symbol (int value is 0)
-				elements[elementCounter - 1] = null;
-	//6.decrease element
-				elementCounter--;
 			}
-		}
-	}
+		
 	
 	/*
 	 * top() function returns the last element of the stack

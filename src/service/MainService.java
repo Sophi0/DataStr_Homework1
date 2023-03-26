@@ -1,8 +1,21 @@
 package service;
 
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Stack;
+
+import dataStr.MyDeque;
 import dataStr.MyQueue;
 import dataStr.MyStack;
 import dataStr.Student;
+
 
 public class MainService {
 
@@ -21,7 +34,7 @@ public class MainService {
 			
 			System.out.println("-->POP<--");
 			
-			charStack.pop(3);	//1, 2, 5
+			charStack.pop();	//1, 2, 5
 			charStack.print();
 			
 			System.out.println("-->TOP<--");
@@ -48,7 +61,7 @@ public class MainService {
 			
 			System.out.println("-->POP<--");
 			
-			studentStack.pop(1);	//Sofja Hohlova 6, 6, 9 Janis Roze 9, 4, 6
+			studentStack.pop();	//Sofja Hohlova 6, 6, 9 Luize Celme 10, 5, 8
 			studentStack.print();
 			
 			System.out.println("-->TOP<--");
@@ -94,27 +107,119 @@ public class MainService {
 			queueStack.enqueue(1);
 			queueStack.print();
 			
-			System.out.println("----STUDENT STACK----");
-			MyQueue <Student> studentsStack = new MyQueue<>();
-			studentsStack.enqueue(new Student("Karlis", "Vagalis", new int [] {8, 8, 7}));	//Karlis Vagalis 8 8 7
-			studentsStack.enqueue(new Student("Inga", "Gulbe", new int [] {2, 8, 6}));		//Karlis Vagalis 8 8 7 Inga Gulbe 2 8 6
-			studentsStack.enqueue(new Student("Raitis", "Vairis", new int [] {10, 10, 9})); //Karlis Vagalis 8 8 7 Inga Gulbe 2 8 6 Raitis Vairis 10 10 9
-			studentsStack.print();
+			System.out.println("----STUDENT QUEUE----");
+			
+			MyQueue <Student> studentsQueue = new MyQueue<>();
+			
+			studentsQueue.enqueue(new Student("Karlis", "Vagalis", new int [] {8, 8, 7}));	//Karlis Vagalis 8 8 7
+			studentsQueue.enqueue(new Student("Inga", "Gulbe", new int [] {2, 8, 6}));		//Karlis Vagalis 8 8 7 Inga Gulbe 2 8 6
+			studentsQueue.enqueue(new Student("Raitis", "Vairis", new int [] {10, 10, 9})); //Karlis Vagalis 8 8 7 Inga Gulbe 2 8 6 Raitis Vairis 10 10 9
+			studentsQueue.print();
 			
 			System.out.println("-->DEQUEUE<--");
 			
-			studentsStack.dequeue();	
-			studentsStack.print();		//Inga Gulbe 2 8 6 Raitis Vairis 10 10 9
-			studentsStack.dequeue();
-			studentsStack.print();  	//Raitis Vairis 10 10 9
+			studentsQueue.dequeue();	
+			studentsQueue.print();		//Inga Gulbe 2 8 6 Raitis Vairis 10 10 9
+			studentsQueue.dequeue();
+			studentsQueue.print();  	//Raitis Vairis 10 10 9
 			
 			System.out.println("-->MAKE EMPTY<--");
 			
-			studentsStack.makeEmpty();
+			studentsQueue.makeEmpty();
 			System.out.println("\nStack is empty and right now will be created new student");
 			//studentStack.print();
-			studentsStack.enqueue(new Student("Viktors", "Naktins", new int [] {7, 4, 5}));	
-			studentsStack.print();
+			studentsQueue.enqueue(new Student("Viktors", "Naktins", new int [] {7, 4, 5}));	
+			studentsQueue.print();
+			
+			System.out.println("-----DECK-----");
+			
+			MyDeque dequeStack = new MyDeque();
+			
+			System.out.println("-->ENQUEUE AT FRONT<--");
+			
+			dequeStack.enqueueAtFront(7);
+			dequeStack.enqueueAtFront(3);
+			dequeStack.enqueueAtFront(44);
+			dequeStack.enqueueAtFront(72);
+			dequeStack.enqueueAtFront(13);
+			dequeStack.enqueueAtFront(42);
+			
+			
+			dequeStack.print();
+			
+			System.out.println("-->ENQUEUE AT END<--");
+			
+			dequeStack.enqueueAtEnd(8);
+			dequeStack.enqueueAtEnd(134);
+			dequeStack.enqueueAtEnd(586);
+	
+			dequeStack.print();
+			
+			System.out.println("-->DEQUEUE FROM FRONT<--");
+			
+			dequeStack.dequeueFromFront();
+			dequeStack.print();
+			
+			System.out.println("-->DEQUEUE FROM END<--");
+			
+			dequeStack.dequeueFromEnd();
+			dequeStack.print();
+			
+			System.out.println("-----STUDENT DECK-------");
+			
+			MyDeque <Student> studentDeck = new MyDeque<>();
+			
+			System.out.println("-->ENQUEUE AT FRONT<--");
+			
+			studentDeck.enqueueAtFront(new Student("Keita", "Olaine", new int [] {8, 8, 7}));		//Karlis Vagalis 8 8 7
+			studentDeck.enqueueAtFront(new Student("Patricija", "Šmite", new int [] {6, 6, 6}));  	//Karlis Vagalis 8 8 7 Patricija Šmite 6 6 6
+			
+			studentDeck.print();
+			
+			System.out.println("-->ENQUEUE AT END<--");
+			
+			studentDeck.enqueueAtEnd(new Student("Grigorijs", "Ivanovs", new int [] {4, 3, 7}));	//Karlis Vagalis 8 8 7 Patricija Šmite 6 6 6 Grigorijs Ivanovs 4 3 7
+			studentDeck.enqueueAtEnd(new Student("Olegs", "Petrovs", new int [] {8, 2, 9}));		//Karlis Vagalis 8 8 7 Patricija Šmite 6 6 6 Grigorijs Ivanovs 4 3 7 Olegs Petrovs 8 2 9
+			
+			studentDeck.print();
+			
+			System.out.println("-->DEQUEUE FROM FRONT<--");
+			
+			studentDeck.dequeueFromFront();
+			studentDeck.print();
+			
+			System.out.println("-->DEQUEUE FROM END<--");
+			
+			studentDeck.dequeueFromEnd();
+			studentDeck.print();
+			
+			System.out.println("-----PHONE CALLS-----");
+			/*
+			MyQueue<String> calls = new MyQueue<>();
+			
+			for (int i = 1; i <= 10; i++) {	//10 - max calls
+		            String phoneNumber = generatePhoneNumber();
+		            calls.offer(phoneNumber);
+		         System.out.printf("Call #%d placed. Phone number: %s\n", i, phoneNumber);
+		     
+		         // handle calls
+		         int callNumber = 1;
+		         while (calls != 0) {
+		             String phoneNumber = calls.poll();
+		             System.out.printf("Answering call #%d. Phone number: %s\n", callNumber++, phoneNumber);
+
+		             try {
+		                 // simulate call handling time
+		                 int callDuration = new Random().nextInt(10000);
+		                 Thread.sleep(callDuration);
+
+		                 System.out.printf("Call #%d handled successfully. Duration: %d ms\n", callNumber - 1, callDuration);
+		             } catch (InterruptedException e) {
+		                 System.out.printf("Call #%d interrupted due to an error.\n", callNumber - 1);
+		             }
+		         }
+		     }    
+			*/
 			
 		}
 		catch(Exception e) {
@@ -122,5 +227,15 @@ public class MainService {
 		}
 		
 	}
-		
+	
+	private static String generatePhoneNumber() {
+        Random rand = new Random();
+        String phoneNumber = "1";
+        for (int i = 0; i < 9; i++) {
+            phoneNumber += rand.nextInt(10);
+        }
+        return phoneNumber;
+    }
+	
+	
 }

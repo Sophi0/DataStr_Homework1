@@ -3,8 +3,8 @@ package dataStr;
 public class MyQueue <T>{
 	//1.variables
 	private T[] elements;
-	private final int DEFAULT_STACK_SIZE = 10;
-	private int queueSize = DEFAULT_STACK_SIZE;
+	private final int DEFAULT_QUEUE_SIZE = 10;
+	private int queueSize = DEFAULT_QUEUE_SIZE;
 	private int elementCounter = 0;
 	private int front, rear = -1;	//front - first index element; rear - last index element
 	
@@ -68,30 +68,7 @@ public class MyQueue <T>{
 	}
 	
 	/*
-	 * dequeue() funkcija - iznem pirmo elementu no rindas
-	 */
-	/*
-	public T dequeue() throws Exception {
-		//1.check if the queue is empty
-		 if (isEmpty()) {
-		        throw (new Exception("Queue is empty"));
-		    }
-		 //2.get the front element and increase it
-		    T frontElement = elements[front];
-		    front++;
-		 //3.decrease elementCounter
-		    elementCounter--;
-		 //4.check if the queue is empty now, set -1 to front and rear
-		    if (elementCounter == 0) {
-		        front = -1;
-		        rear = -1;
-		    }
-	  
-		    return frontElement;
-		}
-	*/
-	/*
-	 * dequeue() other method
+	 * dequeue() iznem pirmo elementu no rindas
 	 */
 	public T dequeue() throws Exception{
 		//1.check if the queue is empty
@@ -138,7 +115,7 @@ public class MyQueue <T>{
 		front = -1;
 		rear = -1;
 		elementCounter = 0;
-		elements = (T[])new Object[DEFAULT_STACK_SIZE];
+		elements = (T[])new Object[DEFAULT_QUEUE_SIZE];
 		System.gc();	
 	}
 	
