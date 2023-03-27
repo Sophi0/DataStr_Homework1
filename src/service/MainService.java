@@ -137,43 +137,43 @@ public class MainService {
 			
 			System.out.println("-->ENQUEUE AT FRONT<--");
 			
-			dequeStack.enqueueAtFront(7);
-			dequeStack.enqueueAtFront(3);
-			dequeStack.enqueueAtFront(44);
-			dequeStack.enqueueAtFront(72);
-			dequeStack.enqueueAtFront(13);
-			dequeStack.enqueueAtFront(42);
+			dequeStack.enqueueAtFront(7);	//7
+			dequeStack.enqueueAtFront(3);	//7 3
+			dequeStack.enqueueAtFront(44);	//7 3 44
+			dequeStack.enqueueAtFront(72);	//7 3 44 72
+			dequeStack.enqueueAtFront(13);	//7 3 44 72 13
+			dequeStack.enqueueAtFront(42);	//7 3 44 72 13 42
 			
 			
 			dequeStack.print();
 			
 			System.out.println("-->ENQUEUE AT END<--");
 			
-			dequeStack.enqueueAtEnd(8);
-			dequeStack.enqueueAtEnd(134);
-			dequeStack.enqueueAtEnd(586);
+			dequeStack.enqueueAtEnd(8);		//7 3 44 72 13 42 8
+			dequeStack.enqueueAtEnd(134);	//7 3 44 72 13 42 8 134
+			dequeStack.enqueueAtEnd(586);	//7 3 44 72 13 42 8 134 586
 	
 			dequeStack.print();
 			
 			System.out.println("-->DEQUEUE FROM FRONT<--");
 			
-			dequeStack.dequeueFromFront();
+			dequeStack.dequeueFromFront();	//3 44 72 13 42 8
 			dequeStack.print();
 			
 			System.out.println("-->DEQUEUE FROM END<--");
 			
-			dequeStack.dequeueFromEnd();
+			dequeStack.dequeueFromEnd();	//3 44 72 13 42
 			dequeStack.print();
 			
 			System.out.println("-->MAKE EMPTY<--");
 			
-			dequeStack.makeEmpty();
+			dequeStack.makeEmpty();	//empty deck
 			//dequeStack.print();
 			System.out.println("Deck is empty and right now will add new elements");
-			dequeStack.enqueueAtFront(74);
-			dequeStack.enqueueAtFront(31);
+			dequeStack.enqueueAtFront(74);	//74
+			dequeStack.enqueueAtFront(31);	//74 31
 			
-			dequeStack.enqueueAtEnd(38);
+			dequeStack.enqueueAtEnd(38);	//74 31 38
 			
 			dequeStack.print();
 			
@@ -183,26 +183,26 @@ public class MainService {
 			
 			System.out.println("-->ENQUEUE AT FRONT<--");
 			
-			studentDeck.enqueueAtFront(new Student("Keita", "Olaine", new int [] {8, 8, 7}));		//Karlis Vagalis 8 8 7
-			studentDeck.enqueueAtFront(new Student("Patricija", "Šmite", new int [] {6, 6, 6}));  	//Karlis Vagalis 8 8 7 Patricija Šmite 6 6 6
+			studentDeck.enqueueAtFront(new Student("Keita", "Olaine", new int [] {8, 8, 7}));		//Keita Olaine 8 8 7
+			studentDeck.enqueueAtFront(new Student("Patricija", "Šmite", new int [] {6, 6, 6}));  	//Keita Olaine 8 8 7 Patricija Šmite 6 6 6
 			
 			studentDeck.print();
 			
 			System.out.println("-->ENQUEUE AT END<--");
 			
-			studentDeck.enqueueAtEnd(new Student("Grigorijs", "Ivanovs", new int [] {4, 3, 7}));	//Karlis Vagalis 8 8 7 Patricija Šmite 6 6 6 Grigorijs Ivanovs 4 3 7
-			studentDeck.enqueueAtEnd(new Student("Olegs", "Petrovs", new int [] {8, 2, 9}));		//Karlis Vagalis 8 8 7 Patricija Šmite 6 6 6 Grigorijs Ivanovs 4 3 7 Olegs Petrovs 8 2 9
+			studentDeck.enqueueAtEnd(new Student("Grigorijs", "Ivanovs", new int [] {4, 3, 7}));	//Keita Olaine 8 8 7 Patricija Šmite 6 6 6 Grigorijs Ivanovs 4 3 7
+			studentDeck.enqueueAtEnd(new Student("Olegs", "Petrovs", new int [] {8, 2, 9}));		//Keita Olaine 8 8 7 Patricija Šmite 6 6 6 Grigorijs Ivanovs 4 3 7 Olegs Petrovs 8 2 9
 			
 			studentDeck.print();
 			
 			System.out.println("-->DEQUEUE FROM FRONT<--");
 			
-			studentDeck.dequeueFromFront();
+			studentDeck.dequeueFromFront();		//Patricija Šmite 6 6 6 Grigorijs Ivanovs 4 3 7 Olegs Petrovs 8 2 9
 			studentDeck.print();
 			
 			System.out.println("-->DEQUEUE FROM END<--");
 			
-			studentDeck.dequeueFromEnd();
+			studentDeck.dequeueFromEnd();	//Patricija Šmite 6 6 6 Grigorijs Ivanovs 4 3 7 
 			studentDeck.print();
 			
 			System.out.println("-->MAKE EMPTY<--");
@@ -211,8 +211,8 @@ public class MainService {
 			//dequeStack.print();
 			System.out.println("Deck is empty and right now will add new students");
 			
-			studentDeck.enqueueAtFront(new Student("Eva", "Pole", new int [] {9, 5, 7}));		//Karlis Vagalis 8 8 7
-			studentDeck.enqueueAtFront(new Student("Maksims", "Ulmanis", new int [] {10, 10, 9})); 
+			studentDeck.enqueueAtFront(new Student("Eva", "Pole", new int [] {9, 5, 7}));			//Eva Pole 9 5 7
+			studentDeck.enqueueAtFront(new Student("Maksims", "Ulmanis", new int [] {10, 10, 9})); 	//Eva Pole 9 5 7 Maksims Ulmanis 10 10 9
 
 			studentDeck.print();
 			
@@ -222,20 +222,21 @@ public class MainService {
 			
 			Random rand = new Random();
 				try {
+			//for loop for generating 20 calls and add them to the queue		
 			for(int i = 0; i < 20; i++) {
 				String phoneNumber = generatePhoneNumber();
 				System.out.println("New call: " + phoneNumber);
 				calls.enqueue(phoneNumber);
-				
+			//add thread.sleep function to handle calls to add new
 				Thread.sleep(rand.nextInt(3000));
 			}
-			
+			//handle calls
 			while(!calls.equals(null)) {
 				String phoneNumber = calls.dequeue();
 				System.out.println("Answering call: " + phoneNumber);
 			}
-		
-				Thread.sleep(rand.nextInt(6000 - 1000) + 1000);
+			//write call handling time
+				Thread.sleep(rand.nextInt(6000 - 1000) + 1000);	//6000 - max call (ms), 1000 - min call duration(ms)
 				}
 				
 				catch(Exception e) {
@@ -248,7 +249,7 @@ public class MainService {
 		}
 		
 	}
-	
+	//generate random number starting from +371 2...
 	private static String generatePhoneNumber() {
         Random rand = new Random();
         String phoneNumber = "+371 2";
