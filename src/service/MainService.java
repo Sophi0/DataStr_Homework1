@@ -165,6 +165,18 @@ public class MainService {
 			dequeStack.dequeueFromEnd();
 			dequeStack.print();
 			
+			System.out.println("-->MAKE EMPTY<--");
+			
+			dequeStack.makeEmpty();
+			//dequeStack.print();
+			System.out.println("Deck is empty and right now will add new elements");
+			dequeStack.enqueueAtFront(74);
+			dequeStack.enqueueAtFront(31);
+			
+			dequeStack.enqueueAtEnd(38);
+			
+			dequeStack.print();
+			
 			System.out.println("-----STUDENT DECK-------");
 			
 			MyDeque <Student> studentDeck = new MyDeque<>();
@@ -193,34 +205,43 @@ public class MainService {
 			studentDeck.dequeueFromEnd();
 			studentDeck.print();
 			
+			System.out.println("-->MAKE EMPTY<--");
+			
+			dequeStack.makeEmpty();
+			//dequeStack.print();
+			System.out.println("Deck is empty and right now will add new students");
+			
+			studentDeck.enqueueAtFront(new Student("Eva", "Pole", new int [] {9, 5, 7}));		//Karlis Vagalis 8 8 7
+			studentDeck.enqueueAtFront(new Student("Maksims", "Ulmanis", new int [] {10, 10, 9})); 
+
+			studentDeck.print();
+			
 			System.out.println("-----PHONE CALLS-----");
-			/*
+			
 			MyQueue<String> calls = new MyQueue<>();
 			
-			for (int i = 1; i <= 10; i++) {	//10 - max calls
-		            String phoneNumber = generatePhoneNumber();
-		            calls.offer(phoneNumber);
-		         System.out.printf("Call #%d placed. Phone number: %s\n", i, phoneNumber);
-		     
-		         // handle calls
-		         int callNumber = 1;
-		         while (calls != 0) {
-		             String phoneNumber = calls.poll();
-		             System.out.printf("Answering call #%d. Phone number: %s\n", callNumber++, phoneNumber);
-
-		             try {
-		                 // simulate call handling time
-		                 int callDuration = new Random().nextInt(10000);
-		                 Thread.sleep(callDuration);
-
-		                 System.out.printf("Call #%d handled successfully. Duration: %d ms\n", callNumber - 1, callDuration);
-		             } catch (InterruptedException e) {
-		                 System.out.printf("Call #%d interrupted due to an error.\n", callNumber - 1);
-		             }
-		         }
-		     }    
-			*/
+			Random rand = new Random();
+				try {
+			for(int i = 0; i < 20; i++) {
+				String phoneNumber = generatePhoneNumber();
+				System.out.println("New call: " + phoneNumber);
+				calls.enqueue(phoneNumber);
+				
+				Thread.sleep(rand.nextInt(3000));
+			}
 			
+			while(!calls.equals(null)) {
+				String phoneNumber = calls.dequeue();
+				System.out.println("Answering call: " + phoneNumber);
+			}
+		
+				Thread.sleep(rand.nextInt(6000 - 1000) + 1000);
+				}
+				
+				catch(Exception e) {
+					e.printStackTrace();
+				}
+					
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -230,8 +251,8 @@ public class MainService {
 	
 	private static String generatePhoneNumber() {
         Random rand = new Random();
-        String phoneNumber = "1";
-        for (int i = 0; i < 9; i++) {
+        String phoneNumber = "+371 2";
+        for (int i = 0; i < 8; i++) {
             phoneNumber += rand.nextInt(10);
         }
         return phoneNumber;

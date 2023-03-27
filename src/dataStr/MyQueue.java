@@ -3,7 +3,7 @@ package dataStr;
 public class MyQueue <T>{
 	//1.variables
 	private T[] elements;
-	private final int DEFAULT_QUEUE_SIZE = 10;
+	private final int DEFAULT_QUEUE_SIZE = 50;
 	private int queueSize = DEFAULT_QUEUE_SIZE;
 	private int elementCounter = 0;
 	private int front, rear = -1;	//front - first index element; rear - last index element
