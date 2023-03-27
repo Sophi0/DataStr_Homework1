@@ -226,29 +226,58 @@ public class MainService {
 			for(int i = 0; i < 20; i++) {
 				String phoneNumber = generatePhoneNumber();
 				System.out.println("New call: " + phoneNumber);
-				calls.enqueue(phoneNumber);
-			//add thread.sleep function to handle calls to add new
-				Thread.sleep(rand.nextInt(3000));
+				calls.enqueue(phoneNumber);	//add numbers to the queue
+			//add thread.sleep function to handle calls to add new numbers to the queue
+				Thread.sleep(rand.nextInt(3000));	//each 3s
 			}
-			//handle calls
+			//write loop while to if is not yet null, write the old numbers and mark them as answered
 			while(!calls.equals(null)) {
-				String phoneNumber = calls.dequeue();
+				String phoneNumber = calls.dequeue();	//remove numbers from the front
 				System.out.println("Answering call: " + phoneNumber);
 			}
 			//write call handling time
-				Thread.sleep(rand.nextInt(6000 - 1000) + 1000);	//6000 - max call (ms), 1000 - min call duration(ms)
+				Thread.sleep(rand.nextInt(6000 - 1000) + 1000);	//6000 - max call duration (ms), 1000 - min call duration(ms)
 				}
 				
 				catch(Exception e) {
 					e.printStackTrace();
 				}
-					
+				
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
+	
+	/* URL ADDRESSES TASK: not working.
+	 * 
+	private static MyDeque enterUrlAddress() {
+		Scanner scanner = new Scanner(System.in);
+		MyDeque<String> enterUrl = new MyDeque<>();
+
+		while(true) {
+			System.out.println("Write an URL address: ");
+			String input = scanner.nextLine();
+			if(input.equals("1")) {
+				input.isEmpty();
+				System.out.println("History is empty");
+			
+				String firstUrl = enterUrl.dequeueFromFront();
+				System.out.println("First url: " + firstUrl);
+			
+			}
+			else {
+				enterUrl.enqueueAtFront(input);
+				if(enterUrl.length() > 10) {
+					String removeUrl = enterUrl.dequeueFromEnd();
+					System.out.println("You can add new url: " + removeUrl);
+			}
+		}
+	}
+}
+	*/
+	
 	//generate random number starting from +371 2...
 	private static String generatePhoneNumber() {
         Random rand = new Random();
@@ -259,5 +288,12 @@ public class MainService {
         return phoneNumber;
     }
 	
-	
+	/*
+	 * I have used some resources to make sure I was doing some functions right. Some functions I did not know how to write. There is some links, where I found information:
+	 * https://www.digitalocean.com/community/tutorials/random-number-generator-java
+	 * https://www.javatpoint.com/thread-sleep-in-java
+	 * https://www.geeksforgeeks.org/implementation-deque-using-circular-array/
+	 * https://www.javatpoint.com/how-to-get-input-from-user-in-java
+	 * https://docs.oracle.com/javase/7/docs/api/java/util/Stack.html
+	 */
 }
